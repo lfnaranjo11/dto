@@ -1,16 +1,12 @@
-Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28) 
-[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type "copyright", "credits" or "license()" for more information.
->>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
-Visit http://www.python.org/download/mac/tcltk/ for current information.
-GNU nano 2.5.3                           File: producer.py    
+ 
 import json, time
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
 from random import uniform
 
-producer = KafkaProducer(bootstrap_servers=['172.24.41.202:8$
-                                                 value_seria$
+
+producer = KafkaProducer(bootstrap_servers=['172.24.41.202:8081'], 
+             value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
 while True:
         producer.send('bogota-usaquen-longitud1-latitud1', {'time': time.strftime("%X"), 'measurement': 'sitio', 
